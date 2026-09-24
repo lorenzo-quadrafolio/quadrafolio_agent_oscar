@@ -1,0 +1,31 @@
+task_id: GOVERNANCE_03
+name: Confirm ownership structure
+phase: governance
+inputs:
+  - financial_model
+  - proposed_ownership
+  - financing_structure
+dependencies:
+  - FORMATION_05
+  - FINANCING_01
+decision:
+  required: true
+  authority: authorized_company_representative
+  record: approved_ownership_structure
+execution:
+  mode: human
+  type: manual
+  worker: project_owner
+approval:
+  required: false
+evidence:
+  - approved_ownership_structure
+  - membership_ledger
+completion:
+  - ownership_percentages_confirmed
+  - membership_ledger_matches
+  - evidence_saved
+escalate_if:
+  - ownership_unclear
+  - ownership_conflict
+  - securities_issue

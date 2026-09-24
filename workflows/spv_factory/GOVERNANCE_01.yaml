@@ -1,0 +1,36 @@
+task_id: GOVERNANCE_01
+name: Prepare and execute Operating Agreement
+phase: governance
+inputs:
+  - spv_legal_name
+  - ownership_structure
+  - management_structure
+  - financing_structure
+dependencies:
+  - FORMATION_06
+  - GOVERNANCE_02
+  - GOVERNANCE_03
+  - FINANCING_01
+decision:
+  required: true
+  authority: authorized_company_representative
+  record: operating_agreement_approval
+execution:
+  mode: human
+  type: manual
+  worker: legal_counsel
+approval:
+  required: true
+  timing: before_execution
+  approver: authorized_company_representative
+evidence:
+  - executed_operating_agreement
+completion:
+  - operating_agreement_signed
+  - ownership_matches
+  - management_matches
+  - evidence_saved
+escalate_if:
+  - ownership_conflict
+  - financing_conflict
+  - legal_issue

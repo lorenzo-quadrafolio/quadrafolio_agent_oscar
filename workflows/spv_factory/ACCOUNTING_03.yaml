@@ -1,0 +1,32 @@
+task_id: ACCOUNTING_03
+name: Confirm tax classification and filing requirements
+phase: accounting
+inputs:
+  - spv_legal_name
+  - ownership_structure
+  - management_structure
+  - financing_structure
+dependencies:
+  - FORMATION_06
+  - GOVERNANCE_03
+decision:
+  required: true
+  authority: tax_advisor_or_authorized_company_representative
+  record: tax_classification_record
+execution:
+  mode: human
+  type: manual
+  worker: tax_advisor
+approval:
+  required: false
+evidence:
+  - tax_classification_record
+  - filing_requirements_record
+completion:
+  - tax_classification_confirmed
+  - filing_requirements_documented
+  - evidence_saved
+escalate_if:
+  - tax_classification_unclear
+  - multi_state_issue
+  - unusual_tax_structure

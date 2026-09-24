@@ -1,0 +1,32 @@
+task_id: FILM_01
+name: Confirm film tax-credit / incentive eligibility and process
+phase: film
+inputs:
+  - film_budget
+  - production_state
+  - production_dates
+  - production_entity
+dependencies:
+  - FORMATION_03
+  - FINANCING_01
+decision:
+  required: true
+  authority: authorized_company_representative
+  record: tax_credit_decision_record
+execution:
+  mode: agent
+  type: api
+  worker: tax_credit_researcher
+approval:
+  required: false
+evidence:
+  - eligibility_analysis
+  - tax_credit_process_record
+completion:
+  - eligibility_status_documented
+  - application_process_documented
+  - evidence_saved
+escalate_if:
+  - eligibility_unclear
+  - program_rules_conflict
+  - specialist_tax_advice_required

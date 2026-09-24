@@ -1,0 +1,34 @@
+task_id: CLOSE_02
+name: Verify all required documents are signed and stored
+phase: close
+inputs:
+  - required_document_list
+  - spv_document_folder
+dependencies:
+  - FORMATION_02
+  - GOVERNANCE_01
+  - FINANCING_02
+  - ACCOUNTING_02
+  - FILM_02
+  - FILM_03
+  - FILM_04
+  - FILM_05
+  - FILM_06
+decision:
+  required: false
+execution:
+  mode: agent
+  type: deterministic
+  worker: document_verifier
+approval:
+  required: false
+evidence:
+  - document_completion_report
+completion:
+  - required_documents_present
+  - executed_versions_present
+  - evidence_saved
+escalate_if:
+  - missing_document
+  - unsigned_document
+  - conflicting_document_versions

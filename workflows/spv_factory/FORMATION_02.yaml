@@ -1,0 +1,26 @@
+task_id: FORMATION_02
+name: Create SPV document folder
+phase: formation
+inputs:
+  - film_name
+  - spv_name
+  - document_folder_structure
+dependencies:
+  - FORMATION_01
+decision:
+  required: false
+execution:
+  mode: agent
+  type: deterministic
+  worker: document_storage
+approval:
+  required: false
+evidence:
+  - document_folder
+completion:
+  - required_folders_exist
+  - folder_link_saved
+  - evidence_saved
+escalate_if:
+  - folder_creation_failed
+  - storage_unavailable

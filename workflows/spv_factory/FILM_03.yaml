@@ -1,0 +1,34 @@
+task_id: FILM_03
+name: Execute director / writer / key talent agreements
+phase: film
+inputs:
+  - approved_talent_terms
+  - ownership_structure
+  - financing_structure
+dependencies:
+  - GOVERNANCE_03
+  - FINANCING_01
+  - FILM_02
+decision:
+  required: true
+  authority: authorized_company_representative
+  record: approved_talent_terms
+execution:
+  mode: human
+  type: manual
+  worker: entertainment_counsel
+approval:
+  required: true
+  timing: before_execution
+  approver: authorized_company_representative
+evidence:
+  - executed_talent_agreements
+completion:
+  - required_talent_agreements_signed
+  - rights_and_economics_documented
+  - evidence_saved
+escalate_if:
+  - guild_or_union_issue
+  - backend_terms_unclear
+  - credit_terms_unclear
+  - rights_issue

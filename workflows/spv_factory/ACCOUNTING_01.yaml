@@ -1,0 +1,31 @@
+task_id: ACCOUNTING_01
+name: Open SPV bank account
+phase: accounting
+inputs:
+  - spv_legal_name
+  - ein
+  - formation_documents
+  - signing_authority
+dependencies:
+  - FORMATION_06
+  - GOVERNANCE_02
+decision:
+  required: false
+execution:
+  mode: agent
+  type: browser
+  worker: banking_worker
+approval:
+  required: true
+  timing: before_submission
+  approver: authorized_company_representative
+evidence:
+  - bank_account_confirmation
+completion:
+  - bank_account_exists
+  - account_name_matches_spv
+  - evidence_saved
+escalate_if:
+  - bank_rejects_application
+  - identity_verification_issue
+  - unexpected_bank_requirement

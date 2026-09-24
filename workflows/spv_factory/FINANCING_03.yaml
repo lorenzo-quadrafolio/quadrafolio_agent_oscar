@@ -1,0 +1,33 @@
+task_id: FINANCING_03
+name: Execute outside financing documents, if applicable
+phase: financing
+inputs:
+  - approved_financing_structure
+  - outside_investor_terms
+  - securities_documents
+dependencies:
+  - FINANCING_01
+  - GOVERNANCE_03
+decision:
+  required: true
+  authority: authorized_company_representative
+  record: outside_financing_decision
+execution:
+  mode: human
+  type: manual
+  worker: legal_counsel
+approval:
+  required: true
+  timing: before_execution
+  approver: authorized_company_representative
+evidence:
+  - executed_outside_financing_documents
+completion:
+  - outside_financing_documents_signed
+  - investor_terms_match_approval
+  - evidence_saved
+escalate_if:
+  - securities_issue
+  - investor_terms_unclear
+  - missing_investor_information
+  - financing_not_applicable

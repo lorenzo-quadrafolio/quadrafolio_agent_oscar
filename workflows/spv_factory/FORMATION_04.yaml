@@ -1,0 +1,32 @@
+task_id: FORMATION_04
+name: Confirm SPV name and state of formation
+phase: formation
+inputs:
+  - proposed_spv_name
+  - proposed_state
+  - project_information
+dependencies:
+  - FORMATION_03
+decision:
+  required: true
+  authority: authorized_company_representative
+  record: approved_spv_name_and_state
+execution:
+  mode: agent
+  type: browser
+  worker: browser_worker
+approval:
+  required: true
+  timing: before_submission
+  approver: authorized_company_representative
+evidence:
+  - name_availability_result
+  - approved_spv_name_and_state
+completion:
+  - name_available
+  - state_confirmed
+  - evidence_saved
+escalate_if:
+  - name_unavailable
+  - state_unclear
+  - information_conflict

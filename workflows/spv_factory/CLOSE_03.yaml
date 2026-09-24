@@ -1,0 +1,30 @@
+task_id: CLOSE_03
+name: Verify funding is received / documented
+phase: close
+inputs:
+  - funding_schedule
+  - bank_records
+  - financing_documents
+dependencies:
+  - FINANCING_04
+  - ACCOUNTING_01
+  - ACCOUNTING_02
+decision:
+  required: false
+execution:
+  mode: agent
+  type: deterministic
+  worker: accounting_system
+approval:
+  required: false
+evidence:
+  - funding_verification_report
+  - bank_records
+completion:
+  - required_funding_received_or_documented
+  - funding_matches_financing
+  - evidence_saved
+escalate_if:
+  - funding_gap
+  - unexplained_bank_transaction
+  - source_mismatch

@@ -1,0 +1,40 @@
+task_id: CLOSE_01
+name: Complete legal and compliance review
+phase: close
+inputs:
+  - formation_documents
+  - governance_documents
+  - financing_documents
+  - rights_documents
+  - production_documents
+  - tax_documents
+dependencies:
+  - GOVERNANCE_01
+  - FINANCING_02
+  - ACCOUNTING_03
+  - FILM_02
+  - FILM_03
+  - FILM_04
+  - FILM_05
+  - FILM_06
+decision:
+  required: true
+  authority: authorized_company_representative
+  record: legal_and_compliance_review
+execution:
+  mode: human
+  type: manual
+  worker: legal_counsel
+approval:
+  required: false
+evidence:
+  - legal_and_compliance_review
+completion:
+  - required_review_complete
+  - open_legal_issues_resolved
+  - evidence_saved
+escalate_if:
+  - unresolved_legal_issue
+  - unresolved_tax_issue
+  - unresolved_rights_issue
+  - unresolved_financing_issue

@@ -1,0 +1,119 @@
+version: "0.3"
+
+task:
+  required:
+    - task_id
+    - name
+    - phase
+    - inputs
+    - dependencies
+    - decision
+    - execution
+    - approval
+    - evidence
+    - completion
+    - escalate_if
+
+  fields:
+
+    task_id:
+      type: string
+      description: "Stable unique identifier for the task."
+
+    name:
+      type: string
+      description: "Human-readable task name."
+
+    phase:
+      type: string
+      enum:
+        - formation
+        - governance
+        - financing
+        - film
+        - accounting
+        - close
+
+    inputs:
+      type: list
+      description: "Information required before the task can start."
+
+    dependencies:
+      type: list
+      description: "Tasks that must be completed before this task can start."
+
+    decision:
+      type: object
+      required:
+        - required
+      fields:
+
+        required:
+          type: boolean
+
+        authority:
+          type: string
+          description: "Role authorized to make the decision."
+
+        record:
+          type: string
+          description: "Evidence or record that captures the decision."
+
+    execution:
+      type: object
+      required:
+        - mode
+        - type
+      fields:
+
+        mode:
+          type: string
+          enum:
+            - human
+            - agent
+
+        type:
+          type: string
+          enum:
+            - manual
+            - deterministic
+            - api
+            - browser
+            - agent
+
+        worker:
+          type: string
+          description: "Worker or system responsible for execution."
+
+    approval:
+      type: object
+      required:
+        - required
+      fields:
+
+        required:
+          type: boolean
+
+        timing:
+          type: string
+          enum:
+            - before_execution
+            - before_submission
+            - after_execution
+            - never
+
+        approver:
+          type: string
+          description: "Role authorized to approve the action."
+
+    evidence:
+      type: list
+      description: "Evidence that must exist after execution."
+
+    completion:
+      type: list
+      description: "Conditions that must be true before the task is marked complete."
+
+    escalate_if:
+      type: list
+      description: "Conditions that stop execution and require human intervention."

@@ -1,0 +1,28 @@
+task_id: FILM_08
+name: Check Los Angeles business tax registration
+phase: film
+inputs:
+  - spv_legal_name
+  - principal_business_address
+  - production_activity
+dependencies:
+  - FORMATION_05
+decision:
+  required: false
+execution:
+  mode: agent
+  type: browser
+  worker: browser_worker
+approval:
+  required: true
+  timing: before_submission
+  approver: authorized_company_representative
+evidence:
+  - la_registration_record
+completion:
+  - registration_status_confirmed
+  - evidence_saved
+escalate_if:
+  - registration_requirement_unclear
+  - application_rejected
+  - unexpected_requirement

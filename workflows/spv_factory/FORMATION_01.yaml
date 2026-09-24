@@ -1,0 +1,24 @@
+task_id: FORMATION_01
+name: Create standard task set for new SPV
+phase: formation
+inputs:
+  - film_spv_record
+  - standard_task_definition
+dependencies: []
+decision:
+  required: false
+execution:
+  mode: agent
+  type: deterministic
+  worker: notion
+approval:
+  required: false
+evidence:
+  - task_set_created
+completion:
+  - standard_tasks_exist
+  - tasks_linked_to_spv
+  - evidence_saved
+escalate_if:
+  - spv_record_missing
+  - task_creation_failed
