@@ -2,12 +2,12 @@ task_id: FORMATION_05
 name: Form project LLC
 phase: formation
 inputs:
-  - approved_spv_name
-  - state
-  - registered_agent
-  - principal_address
+- approved_spv_name
+- state
+- registered_agent
+- principal_address
 dependencies:
-  - FORMATION_04
+- FORMATION_04
 decision:
   required: false
 execution:
@@ -19,15 +19,17 @@ approval:
   timing: before_submission
   approver: authorized_company_representative
 evidence:
-  - articles_of_organization
-  - filing_confirmation
+- articles_of_organization
+- filing_confirmation
 completion:
-  - filing_confirmation_exists
-  - legal_name_matches
-  - state_matches
-  - evidence_saved
+- filing_confirmation_exists
+- legal_name_matches
+- state_matches
+- evidence_saved
 escalate_if:
-  - name_unavailable
-  - information_conflict
-  - unexpected_requirement
-  - filing_information_changed
+- name_unavailable
+- information_conflict
+- unexpected_requirement
+- filing_information_changed
+applicability:
+  type: always

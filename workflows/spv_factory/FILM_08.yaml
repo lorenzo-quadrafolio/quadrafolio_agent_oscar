@@ -1,12 +1,12 @@
 task_id: FILM_08
 name: Check Los Angeles business tax registration
-phase: film
+phase: accounting
 inputs:
-  - spv_legal_name
-  - principal_business_address
-  - production_activity
+- spv_legal_name
+- principal_business_address
+- production_activity
 dependencies:
-  - FORMATION_05
+- FORMATION_05
 decision:
   required: false
 execution:
@@ -18,11 +18,14 @@ approval:
   timing: before_submission
   approver: authorized_company_representative
 evidence:
-  - la_registration_record
+- la_registration_record
 completion:
-  - registration_status_confirmed
-  - evidence_saved
+- registration_status_confirmed
+- evidence_saved
 escalate_if:
-  - registration_requirement_unclear
-  - application_rejected
-  - unexpected_requirement
+- registration_requirement_unclear
+- application_rejected
+- unexpected_requirement
+applicability:
+  type: conditional
+  condition: The SPV is required to register for Los Angeles business tax purposes.

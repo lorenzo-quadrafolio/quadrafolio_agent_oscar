@@ -1,4 +1,4 @@
-version: "0.3"
+version: "0.4"
 
 task:
   required:
@@ -7,6 +7,7 @@ task:
     - phase
     - inputs
     - dependencies
+    - applicability
     - decision
     - execution
     - approval
@@ -15,7 +16,6 @@ task:
     - escalate_if
 
   fields:
-
     task_id:
       type: string
       description: "Stable unique identifier for the task."
@@ -40,21 +40,32 @@ task:
 
     dependencies:
       type: list
-      description: "Tasks that must be completed before this task can start."
+      description: "Tasks that must be completed or marked not applicable before this task can start."
+
+    applicability:
+      type: object
+      required:
+        - type
+      fields:
+        type:
+          type: string
+          enum:
+            - always
+            - conditional
+        condition:
+          type: string
+          description: "Human-readable condition determining whether a conditional task applies."
 
     decision:
       type: object
       required:
         - required
       fields:
-
         required:
           type: boolean
-
         authority:
           type: string
           description: "Role authorized to make the decision."
-
         record:
           type: string
           description: "Evidence or record that captures the decision."
@@ -65,13 +76,11 @@ task:
         - mode
         - type
       fields:
-
         mode:
           type: string
           enum:
             - human
             - agent
-
         type:
           type: string
           enum:
@@ -80,7 +89,6 @@ task:
             - api
             - browser
             - agent
-
         worker:
           type: string
           description: "Worker or system responsible for execution."
@@ -90,10 +98,8 @@ task:
       required:
         - required
       fields:
-
         required:
           type: boolean
-
         timing:
           type: string
           enum:
@@ -101,7 +107,6 @@ task:
             - before_submission
             - after_execution
             - never
-
         approver:
           type: string
           description: "Role authorized to approve the action."

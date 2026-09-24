@@ -2,13 +2,13 @@ task_id: ACCOUNTING_02
 name: Set up bookkeeping and production accounting
 phase: accounting
 inputs:
-  - spv_legal_name
-  - ein
-  - bank_account
-  - film_budget
+- spv_legal_name
+- ein
+- bank_account
+- film_budget
 dependencies:
-  - FORMATION_06
-  - ACCOUNTING_01
+- FORMATION_06
+- ACCOUNTING_01
 decision:
   required: false
 execution:
@@ -18,16 +18,18 @@ execution:
 approval:
   required: false
 evidence:
-  - accounting_system_created
-  - chart_of_accounts
-  - bank_connection
+- accounting_system_created
+- chart_of_accounts
+- bank_connection
 completion:
-  - accounting_entity_matches_spv
-  - chart_of_accounts_matches_film_budget
-  - bank_connection_exists
-  - evidence_saved
+- accounting_entity_matches_spv
+- chart_of_accounts_matches_film_budget
+- bank_connection_exists
+- evidence_saved
 escalate_if:
-  - ein_missing
-  - bank_account_missing
-  - accounting_entity_mismatch
-  - unsupported_accounting_system
+- ein_missing
+- bank_account_missing
+- accounting_entity_mismatch
+- unsupported_accounting_system
+applicability:
+  type: always

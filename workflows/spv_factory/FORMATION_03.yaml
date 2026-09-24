@@ -2,12 +2,12 @@ task_id: FORMATION_03
 name: Confirm project scope and budget
 phase: formation
 inputs:
-  - film_name
-  - project_scope
-  - proposed_budget
+- film_name
+- project_scope
+- proposed_budget
 dependencies:
-  - FORMATION_01
-  - FORMATION_02
+- FORMATION_01
+- FORMATION_02
 decision:
   required: true
   authority: authorized_company_representative
@@ -19,15 +19,17 @@ execution:
 approval:
   required: false
 evidence:
-  - approved_project_scope
-  - approved_budget
+- approved_project_scope
+- approved_budget
 completion:
-  - film_name_confirmed
-  - project_scope_confirmed
-  - budget_confirmed
-  - evidence_saved
+- film_name_confirmed
+- project_scope_confirmed
+- budget_confirmed
+- evidence_saved
 escalate_if:
-  - budget_missing
-  - scope_unclear
-  - conflicting_budget
-  - conflicting_project_information
+- budget_missing
+- scope_unclear
+- conflicting_budget
+- conflicting_project_information
+applicability:
+  type: always

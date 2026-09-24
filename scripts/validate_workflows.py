@@ -10,6 +10,7 @@ REQUIRED_FIELDS = {
     "phase",
     "inputs",
     "dependencies",
+    "applicability",
     "decision",
     "execution",
     "approval",
@@ -118,6 +119,16 @@ for path in files:
 
     if not isinstance(data["dependencies"], list):
         fail(f"{task_id}: dependencies must be a list.")
+
+    applicability = data["applicability"]
+    if not isinstance(applicability, dict):
+        fail(f"{task_id}: applicability must be an object.")
+
+    if applicability.get("type") not in {"always", "conditional"}:
+        fail(f"{task_id}: applicability.type must be always or conditional.")
+
+    if applicability["type"] == "conditional" and not applicability.get("condition"):
+        fail(f"{task_id}: conditional applicability requires condition.")
 
 
 # Validate dependency references.

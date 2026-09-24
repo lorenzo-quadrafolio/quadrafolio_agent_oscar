@@ -2,13 +2,13 @@ task_id: FILM_04
 name: Execute production agreements in SPV name
 phase: film
 inputs:
-  - spv_legal_name
-  - approved_vendor_terms
-  - production_budget
+- spv_legal_name
+- approved_vendor_terms
+- production_budget
 dependencies:
-  - FORMATION_05
-  - ACCOUNTING_01
-  - FILM_02
+- FORMATION_05
+- ACCOUNTING_01
+- FILM_02
 decision:
   required: false
 execution:
@@ -20,12 +20,14 @@ approval:
   timing: before_execution
   approver: authorized_company_representative
 evidence:
-  - executed_production_agreements
+- executed_production_agreements
 completion:
-  - contracts_name_spv
-  - required_contracts_signed
-  - evidence_saved
+- contracts_name_spv
+- required_contracts_signed
+- evidence_saved
 escalate_if:
-  - contract_names_topco
-  - unusual_vendor_terms
-  - missing_rights
+- contract_names_topco
+- unusual_vendor_terms
+- missing_rights
+applicability:
+  type: always

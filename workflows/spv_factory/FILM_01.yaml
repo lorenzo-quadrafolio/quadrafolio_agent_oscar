@@ -2,13 +2,13 @@ task_id: FILM_01
 name: Confirm film tax-credit / incentive eligibility and process
 phase: film
 inputs:
-  - film_budget
-  - production_state
-  - production_dates
-  - production_entity
+- film_budget
+- production_state
+- production_dates
+- production_entity
 dependencies:
-  - FORMATION_03
-  - FINANCING_01
+- FORMATION_03
+- FINANCING_01
 decision:
   required: true
   authority: authorized_company_representative
@@ -20,13 +20,16 @@ execution:
 approval:
   required: false
 evidence:
-  - eligibility_analysis
-  - tax_credit_process_record
+- eligibility_analysis
+- tax_credit_process_record
 completion:
-  - eligibility_status_documented
-  - application_process_documented
-  - evidence_saved
+- eligibility_status_documented
+- application_process_documented
+- evidence_saved
 escalate_if:
-  - eligibility_unclear
-  - program_rules_conflict
-  - specialist_tax_advice_required
+- eligibility_unclear
+- program_rules_conflict
+- specialist_tax_advice_required
+applicability:
+  type: conditional
+  condition: Quadrafolio elects to pursue a film tax credit or other production incentive.

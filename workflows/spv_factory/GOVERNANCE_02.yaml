@@ -2,10 +2,10 @@ task_id: GOVERNANCE_02
 name: Confirm management and signing authority
 phase: governance
 inputs:
-  - proposed_management_structure
-  - proposed_signing_authority
+- proposed_management_structure
+- proposed_signing_authority
 dependencies:
-  - FORMATION_05
+- FORMATION_05
 decision:
   required: true
   authority: authorized_company_representative
@@ -17,11 +17,13 @@ execution:
 approval:
   required: false
 evidence:
-  - management_and_signing_authority_record
+- management_and_signing_authority_record
 completion:
-  - manager_confirmed
-  - signing_authority_confirmed
-  - evidence_saved
+- manager_confirmed
+- signing_authority_confirmed
+- evidence_saved
 escalate_if:
-  - authority_unclear
-  - conflicting_instructions
+- authority_unclear
+- conflicting_instructions
+applicability:
+  type: always

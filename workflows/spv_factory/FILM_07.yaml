@@ -2,12 +2,12 @@ task_id: FILM_07
 name: Confirm distribution / sales contracting entity
 phase: film
 inputs:
-  - distribution_strategy
-  - sales_strategy
-  - rights_structure
+- distribution_strategy
+- sales_strategy
+- rights_structure
 dependencies:
-  - FILM_02
-  - FINANCING_01
+- FILM_02
+- FINANCING_01
 decision:
   required: true
   authority: authorized_company_representative
@@ -19,11 +19,15 @@ execution:
 approval:
   required: false
 evidence:
-  - distribution_entity_decision
+- distribution_entity_decision
 completion:
-  - contracting_entity_confirmed
-  - decision_record_saved
+- contracting_entity_confirmed
+- decision_record_saved
 escalate_if:
-  - distribution_strategy_unclear
-  - rights_structure_conflict
-  - third_party_distribution_requirement
+- distribution_strategy_unclear
+- rights_structure_conflict
+- third_party_distribution_requirement
+applicability:
+  type: conditional
+  condition: A separate distribution or sales contracting entity is required by the
+    approved distribution strategy.

@@ -2,14 +2,14 @@ task_id: FILM_05
 name: Confirm production insurance
 phase: film
 inputs:
-  - spv_legal_name
-  - production_dates
-  - production_locations
-  - production_budget
-  - production_risk_information
+- spv_legal_name
+- production_dates
+- production_locations
+- production_budget
+- production_risk_information
 dependencies:
-  - FORMATION_05
-  - FINANCING_01
+- FORMATION_05
+- FINANCING_01
 decision:
   required: true
   authority: authorized_company_representative
@@ -23,13 +23,15 @@ approval:
   timing: before_execution
   approver: authorized_company_representative
 evidence:
-  - insurance_policies
-  - certificates_of_insurance
+- insurance_policies
+- certificates_of_insurance
 completion:
-  - required_coverage_bound
-  - spv_named_correctly
-  - evidence_saved
+- required_coverage_bound
+- spv_named_correctly
+- evidence_saved
 escalate_if:
-  - coverage_gap
-  - unusual_risk
-  - insurer_declines
+- coverage_gap
+- unusual_risk
+- insurer_declines
+applicability:
+  type: always

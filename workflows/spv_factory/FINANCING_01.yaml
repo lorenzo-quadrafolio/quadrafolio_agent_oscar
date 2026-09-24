@@ -2,11 +2,11 @@ task_id: FINANCING_01
 name: Approve project financing structure
 phase: financing
 inputs:
-  - financial_model
-  - proposed_financing_structure
-  - project_budget
+- financial_model
+- proposed_financing_structure
+- project_budget
 dependencies:
-  - FORMATION_03
+- FORMATION_03
 decision:
   required: true
   authority: authorized_company_representative
@@ -18,12 +18,14 @@ execution:
 approval:
   required: false
 evidence:
-  - financing_decision_record
+- financing_decision_record
 completion:
-  - financing_structure_approved
-  - decision_record_saved
+- financing_structure_approved
+- decision_record_saved
 escalate_if:
-  - financing_structure_unclear
-  - funding_gap
-  - unresolved_debt_terms
-  - unresolved_equity_terms
+- financing_structure_unclear
+- funding_gap
+- unresolved_debt_terms
+- unresolved_equity_terms
+applicability:
+  type: always

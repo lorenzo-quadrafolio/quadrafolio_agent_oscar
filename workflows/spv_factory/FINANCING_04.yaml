@@ -2,11 +2,11 @@ task_id: FINANCING_04
 name: Confirm funding schedule and sources
 phase: financing
 inputs:
-  - approved_financing_structure
-  - executed_financing_documents
-  - project_budget
+- approved_financing_structure
+- executed_financing_documents
+- project_budget
 dependencies:
-  - FINANCING_02
+- FINANCING_02
 decision:
   required: false
 execution:
@@ -16,13 +16,15 @@ execution:
 approval:
   required: false
 evidence:
-  - funding_schedule
-  - funding_sources_record
+- funding_schedule
+- funding_sources_record
 completion:
-  - funding_sources_match_financing
-  - funding_schedule_covers_budget
-  - evidence_saved
+- funding_sources_match_financing
+- funding_schedule_covers_budget
+- evidence_saved
 escalate_if:
-  - funding_gap
-  - source_mismatch
-  - unsigned_financing_document
+- funding_gap
+- source_mismatch
+- unsigned_financing_document
+applicability:
+  type: always

@@ -2,11 +2,11 @@ task_id: CLOSE_04
 name: Mark SPV setup complete
 phase: close
 inputs:
-  - setup_completion_report
+- setup_completion_report
 dependencies:
-  - CLOSE_01
-  - CLOSE_02
-  - CLOSE_03
+- CLOSE_01
+- CLOSE_02
+- CLOSE_03
 decision:
   required: true
   authority: authorized_company_representative
@@ -20,14 +20,16 @@ approval:
   timing: before_execution
   approver: authorized_company_representative
 evidence:
-  - spv_setup_completion_approval
-  - final_spv_status
+- spv_setup_completion_approval
+- final_spv_status
 completion:
-  - all_required_tasks_complete
-  - no_unresolved_escalations
-  - spv_status_marked_complete
-  - evidence_saved
+- all_required_tasks_complete
+- no_unresolved_escalations
+- spv_status_marked_complete
+- evidence_saved
 escalate_if:
-  - required_task_incomplete
-  - unresolved_escalation
-  - missing_final_evidence
+- required_task_incomplete
+- unresolved_escalation
+- missing_final_evidence
+applicability:
+  type: always

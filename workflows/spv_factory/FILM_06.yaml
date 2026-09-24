@@ -2,13 +2,13 @@ task_id: FILM_06
 name: Confirm payroll / contractor setup
 phase: film
 inputs:
-  - production_staff
-  - worker_classifications
-  - payroll_requirements
+- production_staff
+- worker_classifications
+- payroll_requirements
 dependencies:
-  - FORMATION_06
-  - ACCOUNTING_02
-  - ACCOUNTING_03
+- FORMATION_06
+- ACCOUNTING_02
+- ACCOUNTING_03
 decision:
   required: true
   authority: authorized_company_representative
@@ -20,15 +20,17 @@ execution:
 approval:
   required: false
 evidence:
-  - payroll_account
-  - contractor_records
-  - worker_classification_record
+- payroll_account
+- contractor_records
+- worker_classification_record
 completion:
-  - payroll_setup_complete
-  - contractor_setup_complete
-  - classification_review_complete
-  - evidence_saved
+- payroll_setup_complete
+- contractor_setup_complete
+- classification_review_complete
+- evidence_saved
 escalate_if:
-  - worker_classification_unclear
-  - payroll_account_missing
-  - employment_law_issue
+- worker_classification_unclear
+- payroll_account_missing
+- employment_law_issue
+applicability:
+  type: always

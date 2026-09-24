@@ -2,12 +2,12 @@ task_id: FILM_02
 name: Confirm IP ownership / license into SPV
 phase: film
 inputs:
-  - underlying_rights
-  - screenplay
-  - chain_of_title_information
+- underlying_rights
+- screenplay
+- chain_of_title_information
 dependencies:
-  - FORMATION_05
-  - GOVERNANCE_03
+- FORMATION_05
+- GOVERNANCE_03
 decision:
   required: true
   authority: authorized_company_representative
@@ -21,14 +21,16 @@ approval:
   timing: before_execution
   approver: authorized_company_representative
 evidence:
-  - executed_rights_documents
-  - chain_of_title_index
+- executed_rights_documents
+- chain_of_title_index
 completion:
-  - required_rights_identified
-  - rights_documents_executed
-  - chain_of_title_complete
-  - evidence_saved
+- required_rights_identified
+- rights_documents_executed
+- chain_of_title_complete
+- evidence_saved
 escalate_if:
-  - rights_owner_unclear
-  - missing_chain_of_title
-  - rights_conflict
+- rights_owner_unclear
+- missing_chain_of_title
+- rights_conflict
+applicability:
+  type: always

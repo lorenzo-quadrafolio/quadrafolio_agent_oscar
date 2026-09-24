@@ -2,12 +2,12 @@ task_id: FINANCING_02
 name: Execute Topco financing documents
 phase: financing
 inputs:
-  - approved_financing_structure
-  - topco_loan_terms
-  - topco_equity_terms
+- approved_financing_structure
+- topco_loan_terms
+- topco_equity_terms
 dependencies:
-  - FINANCING_01
-  - GOVERNANCE_03
+- FINANCING_01
+- GOVERNANCE_03
 decision:
   required: false
 execution:
@@ -19,13 +19,15 @@ approval:
   timing: before_execution
   approver: authorized_company_representative
 evidence:
-  - executed_topco_financing_documents
+- executed_topco_financing_documents
 completion:
-  - financing_documents_signed
-  - funding_terms_match_approval
-  - evidence_saved
+- financing_documents_signed
+- funding_terms_match_approval
+- evidence_saved
 escalate_if:
-  - loan_terms_missing
-  - equity_terms_missing
-  - related_party_issue
-  - security_or_subordination_issue
+- loan_terms_missing
+- equity_terms_missing
+- related_party_issue
+- security_or_subordination_issue
+applicability:
+  type: always

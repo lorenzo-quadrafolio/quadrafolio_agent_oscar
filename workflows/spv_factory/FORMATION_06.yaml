@@ -2,12 +2,12 @@ task_id: FORMATION_06
 name: Obtain EIN
 phase: formation
 inputs:
-  - spv_legal_name
-  - formation_state
-  - formation_confirmation
-  - responsible_party
+- spv_legal_name
+- formation_state
+- formation_confirmation
+- responsible_party
 dependencies:
-  - FORMATION_05
+- FORMATION_05
 decision:
   required: false
 execution:
@@ -19,12 +19,14 @@ approval:
   timing: before_submission
   approver: authorized_company_representative
 evidence:
-  - ein_confirmation
+- ein_confirmation
 completion:
-  - ein_exists
-  - legal_name_matches
-  - evidence_saved
+- ein_exists
+- legal_name_matches
+- evidence_saved
 escalate_if:
-  - formation_confirmation_missing
-  - responsible_party_unclear
-  - unexpected_irs_requirement
+- formation_confirmation_missing
+- responsible_party_unclear
+- unexpected_irs_requirement
+applicability:
+  type: always

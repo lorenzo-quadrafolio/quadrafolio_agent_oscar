@@ -1,0 +1,42 @@
+task_id: FORMATION_07
+name: Complete California post-formation filings
+phase: formation
+
+inputs:
+  - formed_spv
+  - formation_documents
+  - spv_legal_name
+  - management_information
+
+dependencies:
+  - FORMATION_06
+
+applicability:
+  type: always
+
+decision:
+  required: false
+
+execution:
+  mode: agent
+  type: browser
+  worker: browser_worker
+
+approval:
+  required: true
+  timing: before_submission
+  approver: authorized_company_representative
+
+evidence:
+  - filed_post_formation_documents
+  - filing_confirmation
+
+completion:
+  - required_filings_completed
+  - filing_evidence_saved
+
+escalate_if:
+  - filing_requirement_unclear
+  - filing_rejected
+  - unexpected_requirement
+  - specialist_legal_or_tax_advice_required
